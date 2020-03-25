@@ -1,0 +1,85 @@
+<app-header></app-header>
+
+<div class="wrapper container">
+  <h3>Summary</h3>
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="card confirmed-box">
+        <div class="card-body">
+          <h5 class="card-title">Total Cases</h5>
+          <p class="summary-numbers">
+            {{summary?.confirmed}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="card active-box">
+        <div class="card-body">
+          <h5 class="card-title">Active</h5>
+          <p class="summary-numbers">
+            {{summary?.active}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="card rec-box">
+        <div class="card-body">
+          <h5 class="card-title">Recovered</h5>
+          <p class="summary-numbers">
+            {{summary?.recovered}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="card died-box">
+        <div class="card-body">
+          <h5 class="card-title">Died</h5>
+          <p class="summary-numbers">
+            {{summary?.deaths}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <h4>Corona Report State-wise</h4>
+  <br>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">STATE</th>
+              <th scope="col">TOTAL</th>
+              <th scope="col">ACTIVE</th>
+              <th scope="col">RECOVERED</th>
+              <th scope="col">DIED</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of stateData">
+              <th style="font-weight: 400;">{{item.state}}</th>
+              <td>{{item.confirmed}}</td>
+              <td>{{item.active}}</td>
+              <td>{{item.recovered}}</td>
+              <td>{{item.deaths}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-lg-6" *ngIf="chartLabels">
+      <canvas #myCanvas id="canvas" baseChart [chartType]="chartType" [datasets]="chartData" [labels]="chartLabels"
+        [colors]="chartColors" [options]="chartOptions"></canvas>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

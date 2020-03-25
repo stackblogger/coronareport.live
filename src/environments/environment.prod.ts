@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  dataApi: 'https://api.covid19india.org/data.json'
 };

@@ -1,0 +1,25 @@
+.confirmed-box {
+  color: red;
+}
+.active-box {
+  color: blue;
+}
+.rec-box {
+  color: green;
+}
+.died-box {
+  color: black;
+}
+.card {
+  text-align: center;
+}
+.summary-numbers {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+.table td.fit,
+.table th.fit {
+  white-space: nowrap;
+  width: 1%;
+}
