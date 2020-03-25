@@ -7,6 +7,7 @@
       <div class="card confirmed-box">
         <div class="card-body">
           <h5 class="card-title">Total Cases</h5>
+          <p class="total">[+{{newCases?.total}}]</p>
           <p class="summary-numbers">
             {{summary?.confirmed}}
           </p>
@@ -17,6 +18,7 @@
       <div class="card active-box">
         <div class="card-body">
           <h5 class="card-title">Active</h5>
+          <p class="total">[+{{newCases?.active}}]</p>
           <p class="summary-numbers">
             {{summary?.active}}
           </p>
@@ -27,6 +29,7 @@
       <div class="card rec-box">
         <div class="card-body">
           <h5 class="card-title">Recovered</h5>
+          <p class="total">[+{{newCases?.recovered}}]</p>
           <p class="summary-numbers">
             {{summary?.recovered}}
           </p>
@@ -37,6 +40,7 @@
       <div class="card died-box">
         <div class="card-body">
           <h5 class="card-title">Died</h5>
+          <p class="total">[+{{newCases?.deaths}}]</p>
           <p class="summary-numbers">
             {{summary?.deaths}}
           </p>
@@ -44,7 +48,6 @@
       </div>
     </div>
   </div>
-
   <br>
   <br>
   <h4>Corona Report State-wise</h4>
@@ -64,22 +67,29 @@
           </thead>
           <tbody>
             <tr *ngFor="let item of stateData">
-              <th style="font-weight: 400;">{{item.state}}</th>
+              <th style="font-weight: 400;">
+                <a [routerLink]="['/detail', item.state]">{{item.state}}</a>
+              </th>
               <td>{{item.confirmed}}</td>
               <td>{{item.active}}</td>
               <td>{{item.recovered}}</td>
               <td>{{item.deaths}}</td>
             </tr>
           </tbody>
+          <tfoot>
+            <th>TOTAL</th>
+            <th>{{summary?.confirmed}}</th>
+            <th>{{summary?.active}}</th>
+            <th>{{summary?.recovered}}</th>
+            <th>{{summary?.deaths}}</th>
+          </tfoot>
         </table>
       </div>
     </div>
-
     <div class="col-lg-6" *ngIf="chartLabels">
       <canvas #myCanvas id="canvas" baseChart [chartType]="chartType" [datasets]="chartData" [labels]="chartLabels"
         [colors]="chartColors" [options]="chartOptions"></canvas>
     </div>
   </div>
 </div>
-
 <app-footer></app-footer>

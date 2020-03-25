@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
   data: any;
   summary: any;
   stateData: any;
+  newCases: any;
   @ViewChild('myCanvas', { static: true })
   public canvas: ElementRef;
   public context: CanvasRenderingContext2D;
@@ -30,9 +31,23 @@ export class HomeComponent implements OnInit {
   getData(): void {
     this._mainService.getSummaryData().subscribe((response: any) => {
       this.data = response;
-      this.data.statewise = this.data.statewise.sort((a, b) => b.confirmed - a.confirmed);
+      this.data.statewise = this.data.statewise
+        .sort((a, b) => b.confirmed - a.confirmed)
+        .filter(x => x.confirmed !== '0');
+      console.log(this.data)
       this.summary = this.data.statewise.find(x => x.state === 'Total');
       this.stateData = this.data.statewise.filter(x => x.state !== 'Total');
+
+      const total = Number(this.summary.confirmed) - Number(this.data.cases_time_series[this.data.cases_time_series.length - 2].totalconfirmed);
+      const rec = Number(this.summary.recovered) - Number(this.data.cases_time_series[this.data.cases_time_series.length - 2].totalrecovered);
+      const deaths = Number(this.summary.deaths) - Number(this.data.cases_time_series[this.data.cases_time_series.length - 2].totaldeceased);
+
+      this.newCases = {
+        total: total,
+        active: total - (rec + deaths),
+        recovered: rec,
+        deaths: deaths
+      }
 
       this.prepareChartData();
     })

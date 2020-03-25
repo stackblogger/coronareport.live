@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  dataApi: 'https://api.covid19india.org/data.json'
+  dataApi: 'https://api.covid19india.org/data.json',
+  cityDataApi: 'https://api.covid19india.org/state_district_wise.json'
 };
 
 /*
