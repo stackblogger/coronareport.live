@@ -18,11 +18,19 @@
   font-weight: 700;
   margin-bottom: 0;
 }
-.table td.fit,
-.table th.fit {
-  white-space: nowrap;
-  width: 1%;
-}
+// table {
+//   table-layout: auto;
+// }
+// table,
+// th,
+// td {
+//   text-align: left;
+//   word-break: break-all;
+// }
 .total {
   margin-bottom: 3px;
+}
+.heading {
+  font-weight: 400;
+  text-decoration: underline;
 }

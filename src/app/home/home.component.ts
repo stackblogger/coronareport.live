@@ -34,7 +34,6 @@ export class HomeComponent implements OnInit {
       this.data.statewise = this.data.statewise
         .sort((a, b) => b.confirmed - a.confirmed)
         .filter(x => x.confirmed !== '0');
-      console.log(this.data)
       this.summary = this.data.statewise.find(x => x.state === 'Total');
       this.stateData = this.data.statewise.filter(x => x.state !== 'Total');
 

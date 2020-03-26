@@ -61,14 +61,14 @@
               <th scope="col">STATE</th>
               <th scope="col">TOTAL</th>
               <th scope="col">ACTIVE</th>
-              <th scope="col">RECOVERED</th>
+              <th scope="col">CURED</th>
               <th scope="col">DIED</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of stateData">
-              <th style="font-weight: 400;">
-                <a [routerLink]="['/detail', item.state]">{{item.state}}</a>
+            <tr style="cursor: pointer;" [routerLink]="['/detail', item.state]" *ngFor="let item of stateData">
+              <th class="heading">
+                {{item.state}}
               </th>
               <td>{{item.confirmed}}</td>
               <td>{{item.active}}</td>
