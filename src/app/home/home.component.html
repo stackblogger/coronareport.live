@@ -1,7 +1,10 @@
 <app-header></app-header>
 
 <div class="wrapper container">
-  <h3>Summary</h3>
+  <div class="summary-box">
+    <h3 class="summary">Summary</h3>
+    <span class="last-updated">Last Updated <span>{{lastUpdatedInHours}} HOURS AGO</span></span>
+  </div>
   <div class="row">
     <div class="col-lg-3">
       <div class="card confirmed-box">
@@ -60,7 +63,7 @@
             <tr>
               <th scope="col">STATE</th>
               <th scope="col">TOTAL</th>
-              <th scope="col">ACTIVE</th>
+              <th scope="col">{{activeColumn}}</th>
               <th scope="col">CURED</th>
               <th scope="col">DIED</th>
             </tr>

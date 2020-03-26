@@ -34,3 +34,18 @@
   font-weight: 400;
   text-decoration: underline;
 }
+.summary-box {
+  margin-bottom: 5px;
+}
+.summary {
+  display: inline;
+}
+.last-updated {
+  margin-left: 20px;
+  color: green;
+
+  span {
+    font-size: 16px;
+    font-weight: 500;
+  }
+}

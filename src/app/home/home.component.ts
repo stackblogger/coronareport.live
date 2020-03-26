@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   summary: any;
   stateData: any;
   newCases: any;
+  lastUpdatedInHours: string;
   @ViewChild('myCanvas', { static: true })
   public canvas: ElementRef;
   public context: CanvasRenderingContext2D;
@@ -20,12 +21,32 @@ export class HomeComponent implements OnInit {
   public chartLabels: any[];
   public chartColors: any[];
   public chartOptions: any;
+  activeColumn: string;
   constructor(
     private _mainService: MainService
   ) { }
 
   ngOnInit() {
     this.getData();
+    this.bindActiveColumn();
+  }
+
+  bindActiveColumn() {
+    this.activeColumn = window.innerWidth <= 550 ? 'ACTV' : 'ACTIVE';
+  }
+
+  getLastUpdated(): void {
+    this.lastUpdatedInHours = this.diffHours(new Date(),
+      new Date(this.data.key_values[0].lastupdatedtime
+        .replace(/\//g, "-")
+        .replace(/(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3"))
+    ).toString();
+  }
+
+  diffHours(dt2, dt1) {
+    var diff = (dt2.getTime() - dt1.getTime()) / 1000;
+    diff /= (60 * 60);
+    return Math.abs(Math.round(diff));
   }
 
   getData(): void {
@@ -49,6 +70,8 @@ export class HomeComponent implements OnInit {
       }
 
       this.prepareChartData();
+
+      this.getLastUpdated();
     })
   }
 
