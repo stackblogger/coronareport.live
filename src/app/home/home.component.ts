@@ -64,9 +64,9 @@ export class HomeComponent implements OnInit {
 
       this.newCases = {
         total: total,
-        active: total - (rec + deaths),
-        recovered: rec,
-        deaths: deaths
+        active: (total - (rec + deaths)) < 0 ? 0 : (total - (rec + deaths)),
+        recovered: rec < 0 ? 0 : rec,
+        deaths: deaths < 0 ? 0 : deaths
       }
 
       this.prepareChartData();
