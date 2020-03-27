@@ -3,7 +3,7 @@
 <div class="wrapper container">
   <div class="summary-box">
     <h3 class="summary">Summary</h3>
-    <span class="last-updated">Last Updated <span>{{lastUpdatedInHours}} HOURS AGO</span></span>
+    <span class="last-updated">Last Updated <span>{{lastUpdatedInHours}} <span *ngIf="lastUpdatedInHours < 2">HOUR AGO</span> <span *ngIf="lastUpdatedInHours > 1">HOURS AGO</span></span></span>
   </div>
   <div class="row">
     <div class="col-lg-3">
@@ -73,10 +73,14 @@
               <th class="heading">
                 {{item.state}}
               </th>
-              <td>{{item.confirmed}}</td>
-              <td>{{item.active}}</td>
-              <td>{{item.recovered}}</td>
-              <td>{{item.deaths}}</td>
+              <td class="right-text">
+                <span class="new-case" *ngIf="item.delta.confirmed">
+                  [+{{item.delta.confirmed}}]
+                </span>
+                {{item.confirmed}}</td>
+              <td class="right-text">{{item.active}}</td>
+              <td class="right-text">{{item.recovered}}</td>
+              <td class="right-text">{{item.deaths}}</td>
             </tr>
           </tbody>
           <tfoot>

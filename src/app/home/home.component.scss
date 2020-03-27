@@ -1,23 +1,29 @@
 .confirmed-box {
   color: red;
 }
+
 .active-box {
   color: blue;
 }
+
 .rec-box {
   color: green;
 }
+
 .died-box {
   color: black;
 }
+
 .card {
   text-align: center;
 }
+
 .summary-numbers {
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 0;
 }
+
 // table {
 //   table-layout: auto;
 // }
@@ -30,16 +36,20 @@
 .total {
   margin-bottom: 3px;
 }
+
 .heading {
   font-weight: 400;
   text-decoration: underline;
 }
+
 .summary-box {
   margin-bottom: 5px;
 }
+
 .summary {
   display: inline;
 }
+
 .last-updated {
   margin-left: 20px;
   color: green;
@@ -48,4 +58,23 @@
     font-size: 16px;
     font-weight: 500;
   }
+}
+
+.new-case {
+  font-size: 12px;
+  color: red;
+}
+
+table {
+  background-color: white;
+  border-radius: .25rem;
+}
+
+.table td,
+.table th {
+  padding: .4rem;
+}
+
+.right-text {
+  text-align: right;
 }

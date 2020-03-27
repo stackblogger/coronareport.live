@@ -13,26 +13,26 @@
           <tr>
             <th scope="col">CITY / DISTRICT</th>
             <th scope="col">TOTAL</th>
-            <th scope="col">ACTIVE</th>
+            <!-- <th scope="col">ACTIVE</th>
             <th scope="col">CURED</th>
-            <th scope="col">DIED</th>
+            <th scope="col">DIED</th> -->
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of cityData">
             <th style="font-weight: 400;">{{item.city}}</th>
             <td>{{item.confirmed}}</td>
-            <td>{{item.active}}</td>
+            <!-- <td>{{item.active}}</td>
             <td>{{item.recovered}}</td>
-            <td>{{item.deaths}}</td>
+            <td>{{item.deaths}}</td> -->
           </tr>
         </tbody>
         <tfoot>
           <th>TOTAL</th>
           <th>{{total?.confirmed}}</th>
-          <th>{{total?.active}}</th>
+          <!-- <th>{{total?.active}}</th>
           <th>{{total?.recovered}}</th>
-          <th>{{total?.deaths}}</th>
+          <th>{{total?.deaths}}</th> -->
         </tfoot>
       </table>
     </div>

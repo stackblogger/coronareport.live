@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   summary: any;
   stateData: any;
   newCases: any;
-  lastUpdatedInHours: string;
+  lastUpdatedInHours: number;
   @ViewChild('myCanvas', { static: true })
   public canvas: ElementRef;
   public context: CanvasRenderingContext2D;
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
       new Date(this.data.key_values[0].lastupdatedtime
         .replace(/\//g, "-")
         .replace(/(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3"))
-    ).toString();
+    );
   }
 
   diffHours(dt2, dt1) {
