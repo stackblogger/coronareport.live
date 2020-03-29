@@ -3,7 +3,8 @@
 <div class="wrapper container">
   <div class="summary-box">
     <h3 class="summary">Summary</h3>
-    <span class="last-updated">Last Updated <span>{{lastUpdatedInHours}} <span *ngIf="lastUpdatedInHours < 2">HOUR AGO</span> <span *ngIf="lastUpdatedInHours > 1">HOURS AGO</span></span></span>
+    <span class="last-updated">Last Updated <span>{{lastUpdatedInHours}} <span *ngIf="lastUpdatedInHours < 2">HOUR
+          AGO</span> <span *ngIf="lastUpdatedInHours > 1">HOURS AGO</span></span></span>
   </div>
   <div class="row">
     <div class="col-lg-3">
@@ -62,10 +63,10 @@
           <thead>
             <tr>
               <th scope="col">STATE</th>
-              <th scope="col">TOTAL</th>
-              <th scope="col">{{activeColumn}}</th>
-              <th scope="col">CURED</th>
-              <th scope="col">DIED</th>
+              <th scope="col" class="right-text">TOTAL</th>
+              <th scope="col" class="right-text">{{activeColumn}}</th>
+              <th scope="col" class="right-text">CURED</th>
+              <th scope="col" class="right-text">DIED</th>
             </tr>
           </thead>
           <tbody>
@@ -85,7 +86,11 @@
           </tbody>
           <tfoot>
             <th>TOTAL</th>
-            <th class="right-text">{{summary?.confirmed}}</th>
+            <th class="right-text">
+              <span class="new-case" *ngIf="summary && summary.delta && summary.delta.confirmed">
+                [+{{summary.delta.confirmed}}]
+              </span>
+              {{summary?.confirmed}}</th>
             <th class="right-text">{{summary?.active}}</th>
             <th class="right-text">{{summary?.recovered}}</th>
             <th class="right-text">{{summary?.deaths}}</th>

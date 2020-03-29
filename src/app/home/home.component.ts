@@ -58,9 +58,9 @@ export class HomeComponent implements OnInit {
       this.summary = this.data.statewise.find(x => x.state === 'Total');
       this.stateData = this.data.statewise.filter(x => x.state !== 'Total');
 
-      const total = Number(this.summary.confirmed) - Number(this.data.cases_time_series[this.data.cases_time_series.length - 2].totalconfirmed);
-      const rec = Number(this.summary.recovered) - Number(this.data.cases_time_series[this.data.cases_time_series.length - 2].totalrecovered);
-      const deaths = Number(this.summary.deaths) - Number(this.data.cases_time_series[this.data.cases_time_series.length - 2].totaldeceased);
+      const total = Number(response.key_values[0].confirmeddelta);
+      const rec = Number(response.key_values[0].recovereddelta);
+      const deaths = Number(response.key_values[0].deceaseddelta);
 
       this.newCases = {
         total: total,
