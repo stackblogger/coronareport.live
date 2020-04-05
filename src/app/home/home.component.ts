@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
 
   getLastUpdated(): void {
     this.lastUpdatedInHours = this.diffHours(new Date(),
-      new Date(this.data.key_values[0].lastupdatedtime
+      new Date(this.summary.lastupdatedtime
         .replace(/\//g, "-")
         .replace(/(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3"))
     );
@@ -58,9 +58,17 @@ export class HomeComponent implements OnInit {
       this.summary = this.data.statewise.find(x => x.state === 'Total');
       this.stateData = this.data.statewise.filter(x => x.state !== 'Total');
 
-      const total = Number(response.key_values[0].confirmeddelta);
-      const rec = Number(response.key_values[0].recovereddelta);
-      const deaths = Number(response.key_values[0].deceaseddelta);
+      // const total = Number(response.key_values[0].confirmeddelta);
+      // const rec = Number(response.key_values[0].recovereddelta);
+      // const deaths = Number(response.key_values[0].deceaseddelta);
+
+      // const total = Number(this.summary.confirmed) - Number(this.data.cases_time_series[this.data.cases_time_series.length - 2].totalconfirmed);
+      // const rec = Number(this.summary.recovered) - Number(this.data.cases_time_series[this.data.cases_time_series.length - 2].totalrecovered);
+      // const deaths = Number(this.summary.deaths) - Number(this.data.cases_time_series[this.data.cases_time_series.length - 2].totaldeceased);
+
+      const total = Number(this.summary.deltaconfirmed);
+      const rec = Number(this.summary.deltarecovered);
+      const deaths = Number(this.summary.deltadeaths);
 
       this.newCases = {
         total: total,

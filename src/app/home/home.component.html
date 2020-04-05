@@ -75,8 +75,8 @@
                 {{item.state}}
               </th>
               <td class="right-text">
-                <span class="new-case" *ngIf="item.delta.confirmed">
-                  [+{{item.delta.confirmed}}]
+                <span class="new-case" *ngIf="item.deltaconfirmed && item.deltaconfirmed > 0">
+                  [+{{item.deltaconfirmed}}]
                 </span>
                 {{item.confirmed}}</td>
               <td class="right-text">{{item.active}}</td>
@@ -87,8 +87,8 @@
           <tfoot>
             <th>TOTAL</th>
             <th class="right-text">
-              <span class="new-case" *ngIf="summary && summary.delta && summary.delta.confirmed">
-                [+{{summary.delta.confirmed}}]
+              <span class="new-case" *ngIf="summary && summary.deltaconfirmed">
+                [+{{summary.deltaconfirmed}}]
               </span>
               {{summary?.confirmed}}</th>
             <th class="right-text">{{summary?.active}}</th>
